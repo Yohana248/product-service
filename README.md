@@ -50,11 +50,28 @@ java -jar target/product-service-0.0.1-SNAPSHOT.jar
 
 ---
 
+## 📡 Category API Endpoints
+
+Base URL: `/api/v1/categories`
+
+| Method | Endpoint          | Description              | Request Body Example |
+|--------|------------------|--------------------------|----------------------|
+| GET    | `/`              | Get all categories       | – |
+| GET    | `/{id}`          | Get category by ID       | – |
+| POST   | `/`              | Create new category      | `{ "name": "Books" }` |
+| PUT    | `/{id}`          | Update category by ID    | `{ "name": "Updated Books" }` |
+| DELETE | `/{id}`          | Delete category by ID    | – |
+
+---
+
 ## 📂 Project Structure
 ```
 src/main/java/com/smartinventory/product
  ├── entity/        # JPA entities
+ ├── dto/           # Request/response DTOs
  ├── repository/    # Spring Data JPA repositories
+ ├── service/       # Business logic
+ └── controller/    # REST controllers
 ```
 
 ---
