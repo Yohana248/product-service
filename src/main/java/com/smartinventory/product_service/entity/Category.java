@@ -1,6 +1,7 @@
 package com.smartinventory.product_service.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.smartinventory.product_service.dto.CategoryRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,5 +39,11 @@ public class Category {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    public static Category fromDto(CategoryRequestDto dto) {
+        return Category.builder().
+                name(dto.getName()).
+                build();
+    }
 }
 
