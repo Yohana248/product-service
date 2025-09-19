@@ -64,6 +64,20 @@ Base URL: `/api/v1/categories`
 
 ---
 
+## 📡 Supplier API Endpoints
+
+Base URL: `/api/v1/suppliers`
+
+| Method | Endpoint          | Description           | Request Body Example                                         |
+|--------|------------------|-----------------------|--------------------------------------------------------------|
+| GET    | `/`              | Get all suppliers     | –                                                            |
+| GET    | `/{id}`          | Get supplier by ID    | –                                                            |
+| POST   | `/`              | Create new supplier   | `{ "name": "supplier1", "email": "s1@gmail.com" }`           |
+| PUT    | `/{id}`          | Update supplier by ID | `{ "email": "supplier1@gmail.com", "phone": "01234567890" }` |
+| DELETE | `/{id}`          | Delete supplier by ID | –                                                            |
+
+---
+
 ## 📂 Project Structure
 ```
 src/main/java/com/smartinventory/product

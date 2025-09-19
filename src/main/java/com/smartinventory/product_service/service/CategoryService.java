@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryService {
     @Autowired
-    public CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     public List<CategoryResponseDto> findAll() {
         return categoryRepository.findAll()
@@ -30,15 +30,15 @@ public class CategoryService {
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
     }
 
-    public CategoryResponseDto create(CategoryRequestDto request) {
-        return CategoryResponseDto.fromEntity(categoryRepository.save(Category.fromDto(request)));
+    public CategoryResponseDto create(CategoryRequestDto dto) {
+        return CategoryResponseDto.fromEntity(categoryRepository.save(Category.fromDto(dto)));
     }
 
-    public CategoryResponseDto update(Long id, CategoryRequestDto request) {
+    public CategoryResponseDto update(Long id, CategoryRequestDto dto) {
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
-        category.setName(request.getName());
+        category.setName(dto.getName());
 
         Category saved = categoryRepository.save(category);
         return CategoryResponseDto.fromEntity(saved);
