@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/categories")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
     @Autowired
-    public CategoryService categoryService;
+    private CategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<List<CategoryResponseDto>> findAll() {
@@ -29,16 +29,16 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoryResponseDto> create(@Valid @RequestBody CategoryRequestDto request) {
-        CategoryResponseDto created = categoryService.create(request);
+    public ResponseEntity<CategoryResponseDto> create(@Valid @RequestBody CategoryRequestDto dto) {
+        CategoryResponseDto created = categoryService.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<CategoryResponseDto> update(
             @PathVariable Long id,
-            @Valid @RequestBody CategoryRequestDto request) {
-        CategoryResponseDto updated = categoryService.update(id, request);
+            @Valid @RequestBody CategoryRequestDto dto) {
+        CategoryResponseDto updated = categoryService.update(id, dto);
         return ResponseEntity.ok(updated);
     }
 

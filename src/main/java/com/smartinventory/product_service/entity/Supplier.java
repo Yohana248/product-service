@@ -1,6 +1,8 @@
 package com.smartinventory.product_service.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.smartinventory.product_service.dto.CreateSupplierDto;
+import com.smartinventory.product_service.dto.UpdateSupplierDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,5 +48,20 @@ public class Supplier {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-}
 
+    public static Supplier fromDto(CreateSupplierDto dto) {
+        return Supplier.builder()
+                .name(dto.getName())
+                .email(dto.getEmail())
+                .phone(dto.getPhone())
+                .address(dto.getAddress())
+                .build();
+    }
+
+    public void updateWithDto(UpdateSupplierDto dto) {
+        name = dto.getName() != null ? dto.getName() : name;
+        email = dto.getEmail() != null ? dto.getEmail() : email;
+        phone = dto.getPhone() != null ? dto.getPhone() : phone;
+        address = dto.getAddress() != null ? dto.getAddress() : address;
+    }
+}
