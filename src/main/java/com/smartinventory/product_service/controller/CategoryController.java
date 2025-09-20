@@ -1,11 +1,10 @@
 package com.smartinventory.product_service.controller;
 
-import com.smartinventory.product_service.dto.CategoryResponseDto;
 import com.smartinventory.product_service.dto.CategoryRequestDto;
+import com.smartinventory.product_service.dto.CategoryResponseDto;
 import com.smartinventory.product_service.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryResponseDto> findOne(@PathVariable Long id) throws ChangeSetPersister.NotFoundException {
+    public ResponseEntity<CategoryResponseDto> findById(@PathVariable Long id) {
         return ResponseEntity.ok(categoryService.findById(id));
     }
 
