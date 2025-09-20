@@ -78,6 +78,41 @@ Base URL: `/api/v1/suppliers`
 
 ---
 
+Got it 👍 — let’s extend your README to include the **Product API Endpoints** section, in the same style you already used for Categories and Suppliers. Since you’ve implemented CRUD plus category/price‑filtered pagination, here’s how it could look:
+
+---
+
+## 📡 Product API Endpoints
+
+Base URL: `/api/v1/products`
+
+| Method | Endpoint                        | Description                                      | Request Body Example                                                                 |
+|--------|---------------------------------|--------------------------------------------------|--------------------------------------------------------------------------------------|
+| GET    | `/`                             | Get all products (non‑paginated)                 | –                                                                                    |
+| GET    | `/{id}`                         | Get product by ID                                | –                                                                                    |
+| GET    | `/category/{categoryId}`        | Get products by category with optional price range and pagination | – <br> Example: `/api/v1/products/category/2?minPrice=100&maxPrice=500&page=0&size=10` |
+| POST   | `/`                             | Create new product                               | `{ "name": "Laptop", "sku": "SKU123", "price": 1200.00, "description": "Gaming laptop", "categoryId": 2, "supplierId": 1 }` |
+| PUT    | `/{id}`                         | Update product by ID                             | `{ "name": "Updated Laptop", "price": 1100.00, "description": "Discounted model" }`  |
+| DELETE | `/{id}`                         | Delete product by ID                             | –                                                                                    |
+
+---
+
+### Example Paginated Response
+```json
+{
+  "items": [
+    { "id": 1, "name": "Wireless Mouse", "price": 25.99, "categoryId": 2, "supplierId": 1 },
+    { "id": 2, "name": "Keyboard", "price": 49.99, "categoryId": 2, "supplierId": 1 }
+  ],
+  "page": 0,
+  "size": 10,
+  "totalElements": 42,
+  "totalPages": 5,
+  "last": false
+}
+```
+---
+
 ## 📂 Project Structure
 ```
 src/main/java/com/smartinventory/product
