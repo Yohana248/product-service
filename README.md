@@ -78,10 +78,6 @@ Base URL: `/api/v1/suppliers`
 
 ---
 
-Got it 👍 — let’s extend your README to include the **Product API Endpoints** section, in the same style you already used for Categories and Suppliers. Since you’ve implemented CRUD plus category/price‑filtered pagination, here’s how it could look:
-
----
-
 ## 📡 Product API Endpoints
 
 Base URL: `/api/v1/products`
